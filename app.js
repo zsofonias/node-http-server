@@ -5,8 +5,8 @@ const fs = require('fs');
 
 const server = http.createServer((req, res) => {
     //get file path
-    file_path = path.join(__dirname, 'public', req.url == '/' ? 'index.html': req.url);
-    file_ext = path.extname(file_path);
+    const file_path = path.join(__dirname, 'public', req.url == '/' ? 'index.html': req.url);
+    const file_ext = path.extname(file_path);
     if (!file_ext){
         file_path += '.html'; //set default file to html
         file_ext = path.extname(file_path);
@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
         }
     }
 
-    content_type = getType(file_ext);
+    const content_type = getType(file_ext);
 
     fs.readFile(file_path, (err,data) => {
         if(err){
